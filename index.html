@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Remote Ruler Search - A clean and professional search engine interface powered by Google." />
+    <meta name="keywords" content="search engine, Remote Ruler, Google search, web search" />
+    <meta name="author" content="Fahim Monayem Sopnil" />
+    <title>Remote Ruler Search</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+        :root {
+            --color-primary: #202124; /* Dark Gray */
+            --color-secondary: #5f6368; /* Light Gray */
+            --color-accent: #1a73e8; /* Google Blue */
+            --color-bg: #f8f9fa; /* Light Background */
+            --color-border: #dfe1e5; /* Light Border */
+            --color-button-bg: var(--color-accent);
+            --color-button-hover: #1557b0;
+            --color-text-primary: #202124;
+            --color-text-secondary: #5f6368;
+            --color-link: var(--color-accent);
+            --color-link-hover: #174ea6;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            color: var(--color-text-primary);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(180deg, #f8f9fa 0%, #e8ecef 100%);
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 700px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--color-primary);
+        }
+
+        .logo .remote {
+            color: #d93025; /* Google Red */
+        }
+
+        .logo .ruler {
+            color: var(--color-accent);
+        }
+
+        .search-container {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        form {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            border: 1px solid var(--color-border);
+            border-radius: 24px;
+            box-shadow: 0 1px 6px rgba(32, 33, 36, 0.1);
+            transition: box-shadow 0.2s ease;
+        }
+
+        form:focus-within {
+            box-shadow: 0 3px 12px rgba(32, 33, 36, 0.2);
+        }
+
+        input[type="text"] {
+            flex: 1;
+            padding: 12px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 24px 0 0 24px;
+            outline: none;
+            color: var(--color-text-primary);
+            background: transparent;
+        }
+
+        input[type="text"]::placeholder {
+            color: var(--color-text-secondary);
+            font-weight: 400;
+        }
+
+        button {
+            background-color: var(--color-button-bg);
+            border: none;
+            color: white;
+            font-size: 16px;
+            font-weight: 500;
+            padding: 12px 24px;
+            border-radius: 0 24px 24px 0;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        button:hover {
+            background-color: var(--color-button-hover);
+        }
+
+        .links {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            font-size: 14px;
+        }
+
+        .links a {
+            color: var(--color-link);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .links a:hover {
+            color: var(--color-link-hover);
+            text-decoration: underline;
+        }
+
+        footer {
+            position: absolute;
+            bottom: 20px;
+            font-size: 13px;
+            color: var(--color-text-secondary);
+            text-align: center;
+        }
+
+        footer a {
+            color: var(--color-link);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .watermark {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            font-size: 12px;
+            color: var(--color-text-secondary);
+            opacity: 0.5;
+            transition: opacity 0.2s ease;
+            z-index: 1000;
+        }
+
+        .watermark:hover {
+            opacity: 0.8;
+        }
+
+        .watermark a {
+            color: var(--color-link);
+            text-decoration: none;
+        }
+
+        .watermark a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 15px;
+            }
+
+            .logo {
+                font-size: 36px;
+            }
+
+            .search-container {
+                max-width: 100%;
+            }
+
+            input[type="text"] {
+                font-size: 14px;
+                padding: 10px 16px;
+            }
+
+            button {
+                font-size: 14px;
+                padding: 10px 20px;
+            }
+
+            .links {
+                font-size: 12px;
+                gap: 15px;
+                flex-wrap: wrap;
+            }
+
+            footer {
+                font-size: 12px;
+            }
+
+            .watermark {
+                font-size: 10px;
+                bottom: 5px;
+                right: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <span class="remote">Remote</span> <span class="ruler">Ruler</span>
+        </div>
+
+        <div class="search-container">
+            <form action="https://www.google.com/search" method="GET" role="search" aria-label="Google Search Form">
+                <input type="text" name="q" placeholder="Search the web..." aria-label="Search query" required />
+                <input type="hidden" name="num" value="100" />
+                <button type="submit" aria-label="Search">Search</button>
+            </form>
+        </div>
+
+        <div class="links" aria-label="Navigation links">
+            <a href="https://www.youtube.com/@RemoteRuler" target="_blank" rel="noopener noreferrer">YouTube</a>
+            <a href="https://www.facebook.com/RemoteRuler" target="_blank" rel="noopener noreferrer">Facebook</a>
+            <a href="https://www.instagram.com/remoteruler/" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <a href="https://orbitadslab.my.canva.site/fahimmonayemsopnilofficial" target="_blank" rel="noopener noreferrer">Website</a>
+        </div>
+    </div>
+
+    <footer>
+        © 2025 Remote Ruler
+    </footer>
+
+    <div class="watermark">
+        Created by <a href="https://www.facebook.com/Verified.Sopnil" target="_blank" rel="noopener noreferrer">Fahim Monayem Sopnil</a>
+    </div>
+</body>
+</html>
