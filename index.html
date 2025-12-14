@@ -1,283 +1,98 @@
+<!--
+    Remote Ruler - Pro Search Interface
+    Copyright (c) 2025 Remote Ruler. All rights reserved.
+    Designed by Fahim Monayem Sopnil.
+-->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Remote Ruler Search - A modern, professional search interface powered by Google." />
-    <meta name="keywords" content="search engine, Remote Ruler, Google search, web search" />
-    <meta name="author" content="Fahim Monayem Sopnil" />
-    <title>Remote Ruler Search</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
-
-        :root {
-            --color-primary: #1a202c;
-            --color-secondary: #4a5568;
-            --color-accent: #2563eb;
-            --color-bg: #f4f6fb;
-            --color-border: #e2e8f0;
-            --color-button-bg: var(--color-accent);
-            --color-button-hover: #174ea6;
-            --color-text-primary: #1a202c;
-            --color-text-secondary: #4a5568;
-            --color-link: var(--color-accent);
-            --color-link-hover: #174ea6;
-            --color-shadow: 0 8px 32px rgba(37, 99, 235, 0.10), 0 1.5px 8px rgba(60,72,88,0.05);
-        }
-
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Roboto', Arial, sans-serif;
-            background: linear-gradient(145deg, #f4f6fb 0%, #e3e9f0 100%);
-            color: var(--color-text-primary);
-            margin: 0;
-            padding: 0;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 520px;
-            background: #fff;
-            border-radius: 32px;
-            padding: 48px 36px 36px 36px;
-            margin: 56px 0 0 0;
-            box-shadow: var(--color-shadow);
-            text-align: center;
-            position: relative;
-            border: 1.5px solid #f0f1f7;
-        }
-
-        .logo {
-            font-size: 46px;
-            font-weight: 800;
-            margin-bottom: 18px;
-            letter-spacing: -1.5px;
-            line-height: 1.08;
-            color: var(--color-primary);
-            font-family: 'Roboto', Arial, sans-serif;
-        }
-
-        .logo .remote {
-            color: #d32f2f; /* Google Red */
-            font-weight: 800;
-        }
-
-        .logo .ruler {
-            color: var(--color-accent);
-            font-weight: 800;
-        }
-
-        .subtitle {
-            font-size: 19px;
-            color: var(--color-secondary);
-            margin-bottom: 40px;
-            font-weight: 400;
-            letter-spacing: .04em;
-        }
-
-        .search-container {
-            width: 100%;
-        }
-
-        form {
-            display: flex;
-            align-items: center;
-            width: 100%;
-            border: 2px solid var(--color-border);
-            border-radius: 36px;
-            box-shadow: 0 2px 16px rgba(37, 99, 235, 0.07);
-            transition: box-shadow 0.25s, border-color 0.25s;
-            background: #f8fafc;
-        }
-
-        form:focus-within {
-            box-shadow: 0 8px 32px rgba(37, 99, 235, 0.18);
-            border-color: var(--color-accent);
-        }
-
-        input[type="text"] {
-            flex: 1;
-            padding: 16px 26px;
-            font-size: 18px;
-            border: none;
-            border-radius: 36px 0 0 36px;
-            outline: none;
-            background: transparent;
-            color: var(--color-text-primary);
-        }
-
-        input[type="text"]::placeholder {
-            color: var(--color-text-secondary);
-            opacity: 0.7;
-            font-weight: 400;
-            letter-spacing: .03em;
-        }
-
-        button {
-            background-color: var(--color-button-bg);
-            border: none;
-            color: #fff;
-            font-size: 18px;
-            font-weight: 600;
-            padding: 16px 38px;
-            border-radius: 0 36px 36px 0;
-            cursor: pointer;
-            transition: background 0.18s;
-            box-shadow: 0 2px 8px rgba(37, 99, 235, 0.05);
-            letter-spacing: .01em;
-        }
-
-        button:hover, button:focus {
-            background-color: var(--color-button-hover);
-        }
-
-        .links {
-            margin-top: 38px;
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            font-size: 16px;
-        }
-
-        .links a {
-            color: var(--color-link);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.2s, background 0.2s;
-            padding: 4px 10px;
-            border-radius: 8px;
-            background: transparent;
-        }
-
-        .links a:hover, .links a:focus {
-            color: #fff;
-            background: var(--color-link-hover);
-            text-decoration: none;
-        }
-
-        footer {
-            margin-top: 48px;
-            font-size: 14px;
-            color: var(--color-text-secondary);
-            text-align: center;
-        }
-
-        footer a {
-            color: var(--color-link);
-            text-decoration: none;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-
-        .watermark {
-            position: fixed;
-            bottom: 14px;
-            right: 22px;
-            font-size: 13px;
-            color: var(--color-text-secondary);
-            opacity: 0.70;
-            z-index: 1000;
-            background: rgba(255,255,255,0.75);
-            padding: 4px 14px;
-            border-radius: 14px;
-            box-shadow: 0 2px 12px rgba(37, 99, 235, 0.09);
-        }
-
-        .watermark a {
-            color: var(--color-link);
-            font-weight: 600;
-        }
-
-        .watermark a:hover {
-            color: var(--color-link-hover);
-            text-decoration: underline;
-        }
-
-        @media (max-width: 600px) {
-            .container {
-                padding: 26px 8px 14px 8px;
-                margin: 19px 0 0 0;
-                max-width: 99vw;
-            }
-
-            .logo {
-                font-size: 30px;
-            }
-
-            .subtitle {
-                font-size: 14px;
-            }
-
-            .search-container {
-                max-width: 100%;
-            }
-
-            input[type="text"] {
-                font-size: 14px;
-                padding: 10px 10px;
-            }
-
-            button {
-                font-size: 14px;
-                padding: 10px 20px;
-            }
-
-            .links {
-                font-size: 12px;
-                gap: 13px;
-                flex-wrap: wrap;
-            }
-
-            footer {
-                font-size: 11px;
-            }
-
-            .watermark {
-                font-size: 10px;
-                bottom: 4px;
-                right: 4px;
-                padding: 2px 7px;
-            }
-        }
-    </style>
+    <meta name="description" content="Remote Ruler Search - A premium, privacy-focused search experience." />
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap"
+        rel="stylesheet">
+    <title>Remote Ruler | Pro Search</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <div class="container">
-        <div class="logo">
-            <span class="remote">Remote</span> <span class="ruler">Ruler</span>
-        </div>
-        <div class="subtitle">
-            Elevate your search experience with a clean, professional interface powered by Google.
-        </div>
-        <div class="search-container">
-            <form action="https://www.google.com/search" method="GET" role="search" aria-label="Google Search Form" autocomplete="off">
-                <input type="text" name="q" placeholder="Search the web..." aria-label="Search query" required />
-                <input type="hidden" name="num" value="100" />
-                <button type="submit" aria-label="Search">Search</button>
-            </form>
-        </div>
-        <div class="links" aria-label="Navigation links">
-            <a href="https://www.youtube.com/@RemoteRuler" target="_blank" rel="noopener noreferrer">YouTube</a>
-            <a href="https://www.facebook.com/RemoteRuler" target="_blank" rel="noopener noreferrer">Facebook</a>
-            <a href="https://www.instagram.com/remoteruler/" target="_blank" rel="noopener noreferrer">Instagram</a>
-            <a href="https://orbitadslab.my.canva.site/fahimmonayemsopnilofficial" target="_blank" rel="noopener noreferrer">Website</a>
-        </div>
+    <!-- Background Canvas for Particles -->
+    <canvas id="gravityCanvas"></canvas>
+
+    <!-- UI Overlay -->
+    <div class="ui-wrapper">
+        <header class="header">
+            <div class="brand">
+                <img src="Logo/Remote_Ruler.png" alt="Remote Ruler" class="google-logo" style="border-radius: 50%;">
+            </div>
+        </header>
+
+        <main class="hero">
+
+
+            <h1 class="hero-title">
+                Experience liftoff <br>
+                <span class="bold-text">with the next-generation Search</span>
+            </h1>
+
+            <div class="action-dock">
+                <form id="searchForm" role="search" autocomplete="off" class="search-pill">
+                    <input type="text" id="searchInput" name="q" placeholder="Without Being Tracked" required />
+                    <button type="submit" class="cta-primary">
+                        <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                            <path
+                                d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
+                        </svg>
+                        Search
+                    </button>
+                </form>
+            </div>
+
+            <div class="social-links">
+                <a href="https://www.youtube.com/@RemoteRuler" target="_blank" aria-label="YouTube">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                    </svg>
+                </a>
+                <a href="https://www.facebook.com/RemoteRuler" target="_blank" aria-label="Facebook">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.791-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                    </svg>
+                </a>
+                <a href="https://www.instagram.com/remoteruler/" target="_blank" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                    </svg>
+                </a>
+                <a href="https://remoteruler.github.io/Website/" target="_blank" aria-label="Website">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" />
+                    </svg>
+                </a>
+            </div>
+        </main>
     </div>
-    <footer>
-        &copy; Remote Ruler. All rights reserved for the lifetime of this service.
-    </footer>
+
     <div class="watermark">
-        Created by <a href="https://www.facebook.com/Verified.Sopnil" target="_blank" rel="noopener noreferrer">Fahim Monayem Sopnil</a>
+        Designed by <br>
+        <a href="https://www.facebook.com/Verified.Sopnil" target="_blank">Fahim Monayem Sopnil</a>
+        <br>
+        <span style="font-size: 0.8em; opacity: 0.8;">&copy; Remote Ruler. All rights reserved.</span>
     </div>
+
+    <script src="quotes.js"></script>
+    <script src="script.js"></script>
 </body>
+
 </html>
