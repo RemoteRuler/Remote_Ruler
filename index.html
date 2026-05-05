@@ -9,12 +9,18 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Remote Ruler Search - A minimalist, privacy-focused search experience." />
-    <title>Remote Ruler | Search</title>
+    <meta name="description" content="Remote Ruler Search - A minimalist, privacy-focused search experience.">
+    <meta name="keywords" content="private search, privacy focused, duckduckgo, anonymous search">
+    <meta name="author" content="Fahim Monayem Sopnil">
+    <title>Remote Ruler | Private Search</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="Logo/Remote_Ruler.png" type="image/x-icon">
 </head>
 
 <body>
+    <!-- Skip to content link for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
     <!-- Top Navigation Bar (Apple Style) -->
     <nav class="global-nav">
         <div class="nav-content">
@@ -32,7 +38,7 @@
     </nav>
 
     <!-- Main Content -->
-    <main class="hero">
+    <main class="hero" id="main-content">
         <div class="hero-content">
             <h1 class="hero-title" id="quoteContainer">
                 <span class="quote-text">Redefining search.</span><br>
@@ -47,7 +53,13 @@
                             <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                         </svg>
                     </div>
-                    <input type="text" id="searchInput" name="q" placeholder="Search the web securely" required />
+                    <input type="search" id="searchInput" name="q" placeholder="Search the web securely" aria-label="Search query" required />
+                    <button type="submit" class="search-submit-button" aria-label="Submit search">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="search-submit-icon">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                    </button>
                 </form>
             </div>
         </div>
@@ -73,7 +85,7 @@
             
             <div class="watermark">
                 Designed by <a href="https://www.facebook.com/Verified.Sopnil" target="_blank" class="author-link">Fahim Monayem Sopnil</a><br>
-                <span>&copy; Remote Ruler. All rights reserved.</span>
+                <span>&copy; <span id="currentYear"></span> Remote Ruler. All rights reserved.</span>
             </div>
         </div>
     </footer>
